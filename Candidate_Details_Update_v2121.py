@@ -1,24 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu November 21 10:41 2019
+Created on Thu November  21 09:41 2019
 
-Last Updated Mon February 24 09:10 2020
+Last Updated Mon Feb 24 09:42 2020
 
 @author: pierreb
 """
 
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
+
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5 import QtCore, QtGui, QtWidgets
 import pymysql
-import time
 import sys
-from PyQt5.uic import loadUiType
-from clickatell.http import Http
-from PyQt5.QtWidgets import qApp
-from PyQt5.QtCore import Qt, QModelIndex
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QPushButton, \
-    QTableWidget, QTableWidgetItem, QMessageBox, QHBoxLayout, QLineEdit, QLabel, QGridLayout, QCheckBox, QHeaderView
-from Qualification_add import Ui_Form
 
 
 from Qualification123 import Ui_Qualification
@@ -31,12 +27,12 @@ from Attachment import Ui_Attachment
 from Candidate_Training_Details import Ui_CandidateTrainingDetails
 
 
-class Ui_CandidateEnrollment(object):
-    def setupUi(self, CandidateEnrollment):
-        CandidateEnrollment.setObjectName("CandidateEnrollment")
-        CandidateEnrollment.resize(1154, 687)
-        CandidateEnrollment.setStyleSheet("font: 10pt \"Calibri\";")
-        self.centralwidget = QtWidgets.QWidget(CandidateEnrollment)
+class Ui_CandidateUpdate(object):
+    def setupUi(self, CandidateUpdate):
+        CandidateUpdate.setObjectName("CandidateUpdate")
+        CandidateUpdate.resize(1154, 687)
+        CandidateUpdate.setStyleSheet("font: 10pt \"Calibri\";")
+        self.centralwidget = QtWidgets.QWidget(CandidateUpdate)
         self.centralwidget.setObjectName("centralwidget")
         self.MainTabs = QtWidgets.QTabWidget(self.centralwidget)
         self.MainTabs.setGeometry(QtCore.QRect(10, 10, 1131, 531))
@@ -1212,387 +1208,330 @@ class Ui_CandidateEnrollment(object):
         self.pushButton_3.setGeometry(QtCore.QRect(100, 10, 75, 23))
         self.pushButton_3.setObjectName("pushButton_3")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        CandidateEnrollment.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(CandidateEnrollment)
+        CandidateUpdate.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(CandidateUpdate)
         self.statusbar.setObjectName("statusbar")
-        CandidateEnrollment.setStatusBar(self.statusbar)
+        CandidateUpdate.setStatusBar(self.statusbar)
+
+        self.retranslateUi(CandidateUpdate)
+        self.MainTabs.setCurrentIndex(0)
+        self.Address.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(CandidateUpdate)
+
+    def retranslateUi(self, CandidateUpdate):
+        _translate = QtCore.QCoreApplication.translate
+        CandidateUpdate.setWindowTitle(_translate("CandidateUpdate", "Candidate Details CandidateUpdate v2.1.120"))
+        self.label_3.setText(_translate("CandidateUpdate", "Second Name:"))
+        self.label_4.setText(_translate("CandidateUpdate", "Last Name:"))
+        self.label_14.setText(_translate("CandidateUpdate", "Telephone Work:"))
+        self.label_18.setText(_translate("CandidateUpdate", "SANC Number:"))
+        self.label_17.setText(_translate("CandidateUpdate", "Category:"))
+        self.label_13.setText(_translate("CandidateUpdate", "Telephone Home:"))
+        self.label_12.setText(_translate("CandidateUpdate", "Folder (Status):"))
+        self.label_15.setText(_translate("CandidateUpdate", "Telephone Cell:"))
+        self.label_20.setText(_translate("CandidateUpdate", "Employment Equity:"))
+        self.label_19.setText(_translate("CandidateUpdate", "Marital Status:"))
+        self.label_16.setText(_translate("CandidateUpdate", "Email Address:"))
+        self.label_21.setText(_translate("CandidateUpdate", "Unit Nr:"))
+        self.label_22.setText(_translate("CandidateUpdate", "Complex:"))
+        self.label_23.setText(_translate("CandidateUpdate", "Street Nr:"))
+        self.label_24.setText(_translate("CandidateUpdate", "Street Name/Farm:"))
+        self.label_25.setText(_translate("CandidateUpdate", "Suburb/District:"))
+        self.label_26.setText(_translate("CandidateUpdate", "City/Town:"))
+        self.label_27.setText(_translate("CandidateUpdate", "Postal Code:"))
+        self.label_28.setText(_translate("CandidateUpdate", "Country/Region:"))
+        self.Address.setTabText(self.Address.indexOf(self.Phyical), _translate("CandidateUpdate", "Phyical"))
+        self.label_29.setText(_translate("CandidateUpdate", "Suburb/District:"))
+        self.label_30.setText(_translate("CandidateUpdate", "Postal Code:"))
+        self.label_31.setText(_translate("CandidateUpdate", "Unit Nr:"))
+        self.label_32.setText(_translate("CandidateUpdate", "Country/Region:"))
+        self.label_33.setText(_translate("CandidateUpdate", "Street Name/Farm:"))
+        self.label_34.setText(_translate("CandidateUpdate", "Street Nr:"))
+        self.label_35.setText(_translate("CandidateUpdate", "City/Town:"))
+        self.label_36.setText(_translate("CandidateUpdate", "Complex:"))
+        self.Address.setTabText(self.Address.indexOf(self.Postal), _translate("CandidateUpdate", "Postal"))
+        self.label_37.setText(_translate("CandidateUpdate", "Complex:"))
+        self.label_38.setText(_translate("CandidateUpdate", "Unit Nr:"))
+        self.label_39.setText(_translate("CandidateUpdate", "Street Nr:"))
+        self.label_40.setText(_translate("CandidateUpdate", "Postal Code:"))
+        self.label_41.setText(_translate("CandidateUpdate", "Street Name/Farm:"))
+        self.label_42.setText(_translate("CandidateUpdate", "Suburb/District:"))
+        self.label_43.setText(_translate("CandidateUpdate", "City/Town:"))
+        self.label_44.setText(_translate("CandidateUpdate", "Country/Region:"))
+        self.lineEdit_38.setText(_translate("CandidateUpdate", "Medx Staff"))
+        self.lineEdit_39.setText(_translate("CandidateUpdate", "36"))
+        self.lineEdit_40.setText(_translate("CandidateUpdate", "Main Road"))
+        self.lineEdit_42.setText(_translate("CandidateUpdate", "Strand"))
+        self.lineEdit_43.setText(_translate("CandidateUpdate", "7140"))
+        self.lineEdit_47.setText(_translate("CandidateUpdate", "SOUTH AFRICA"))
+        self.Address.setTabText(self.Address.indexOf(self.Work), _translate("CandidateUpdate", "Work"))
+        self.label_8.setText(_translate("CandidateUpdate", "Passport Country:"))
+        self.label_5.setText(_translate("CandidateUpdate", "Initials:"))
+        self.label_10.setText(_translate("CandidateUpdate", "Date of Birth:"))
+        self.label_7.setText(_translate("CandidateUpdate", "Age:"))
+        self.label_6.setText(_translate("CandidateUpdate", "Identification Number:"))
+        self.label_9.setText(_translate("CandidateUpdate", "Passport Number:"))
+        self.label_11.setText(_translate("CandidateUpdate", "Gender:"))
+        self.comboBox.setItemText(0, _translate("CandidateUpdate", "Ms."))
+        self.comboBox.setItemText(1, _translate("CandidateUpdate", "Mrs."))
+        self.comboBox.setItemText(2, _translate("CandidateUpdate", "Miss"))
+        self.comboBox.setItemText(3, _translate("CandidateUpdate", "Mr."))
+        self.comboBox.setItemText(4, _translate("CandidateUpdate", "Dr."))
+        self.comboBox.setItemText(5, _translate("CandidateUpdate", "Prof."))
+        self.label_58.setText(_translate("CandidateUpdate", "Birthday Message:"))
+        self.label_59.setText(_translate("CandidateUpdate", "Vacancy Notification:"))
+        self.label_60.setText(_translate("CandidateUpdate", "Payment Notifications:"))
+        self.checkBox_6.setText(_translate("CandidateUpdate", "Send SMS"))
+        self.checkBox_7.setText(_translate("CandidateUpdate", "Send SMS"))
+        self.checkBox_8.setText(_translate("CandidateUpdate", "Payment SMS"))
+        self.checkBox_9.setText(_translate("CandidateUpdate", "Eligble For Leave"))
+        self.checkBox_10.setText(_translate("CandidateUpdate", "Own Transpoort"))
+        self.widget.setToolTip(_translate("CandidateUpdate", "Image"))
+        self.label_2.setText(_translate("CandidateUpdate", "First Name:"))
+        self.label.setText(_translate("CandidateUpdate", "Title:"))
+        self.label_61.setText(_translate("CandidateUpdate", "Candidate ID:"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab), _translate("CandidateUpdate", "General"))
+        self.label_55.setText(_translate("CandidateUpdate", "Repayments occur per:"))
+        self.label_56.setText(_translate("CandidateUpdate", "Bank:"))
+        self.label_49.setText(_translate("CandidateUpdate", "Account Holder Name:"))
+        self.label_46.setText(_translate("CandidateUpdate", "Account Name:"))
+        self.label_53.setText(_translate("CandidateUpdate", "Payment Type:"))
+        self.label_48.setText(_translate("CandidateUpdate", "Account Type:"))
+        self.label_47.setText(_translate("CandidateUpdate", "Account Number:"))
+        self.label_51.setText(_translate("CandidateUpdate", "Registerd:"))
+        self.label_52.setText(_translate("CandidateUpdate", "Payment Frequency:"))
+        self.label_50.setText(_translate("CandidateUpdate", "Account Holder Relationship:"))
+        self.label_45.setText(_translate("CandidateUpdate", "Branch Code:"))
+        self.label_54.setText(_translate("CandidateUpdate", "Maximum Payback Amount:"))
+        self.label_80.setText(_translate("CandidateUpdate", "<html><head/><body><p><span style=\" color:#0000ff;\">Financial Details</span></p></body></html>"))
+        self.label_81.setText(_translate("CandidateUpdate", "________________________________________________________"))
+        self.label_84.setText(_translate("CandidateUpdate", "<html><head/><body><p><span style=\" color:#0000ff;\">Account Information</span></p></body></html>"))
+        self.label_85.setText(_translate("CandidateUpdate", "________________________________________________________"))
+        self.label_82.setText(_translate("CandidateUpdate", "<html><head/><body><p><span style=\" color:#0000ff;\">Tax</span></p></body></html>"))
+        self.label_83.setText(_translate("CandidateUpdate", "_______________________________________________________________________"))
+        self.label_62.setText(_translate("CandidateUpdate", "Tax Status:"))
+        self.label_63.setText(_translate("CandidateUpdate", "Income Tax nr:"))
+        self.label_64.setText(_translate("CandidateUpdate", "Engaged:"))
+        self.label_65.setText(_translate("CandidateUpdate", "Discharged:"))
+        self.label_66.setText(_translate("CandidateUpdate", "UIF Registrerd:"))
+        self.label_67.setText(_translate("CandidateUpdate", "UIF Status:"))
+        self.label_88.setText(_translate("CandidateUpdate", "___________________________________"))
+        self.label_86.setText(_translate("CandidateUpdate", "<html><head/><body><p><span style=\" color:#0000ff;\">Medical / Pension / Provident</span></p></body></html>"))
+        self.label_70.setText(_translate("CandidateUpdate", "Medical Aid Start Date:"))
+        self.label_71.setText(_translate("CandidateUpdate", "Medical Aid Dependants:"))
+        self.label_72.setText(_translate("CandidateUpdate", "Pension Fund Start Date:"))
+        self.label_73.setText(_translate("CandidateUpdate", "Provident Fund Start Date:"))
+        self.pushButton_5.setText(_translate("CandidateUpdate", "Delete"))
+        self.pushButton_6.setText(_translate("CandidateUpdate", "Add"))
+        self.radioButton_3.setText(_translate("CandidateUpdate", "Month"))
+        self.radioButton_4.setToolTip(_translate("CandidateUpdate", "Day3"))
+        self.radioButton_4.setWhatsThis(_translate("CandidateUpdate", "Day2"))
+        self.radioButton_4.setText(_translate("CandidateUpdate", "Payroll Run"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_2), _translate("CandidateUpdate", "Payroll"))
+        self.pushButton_7.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_8.setText(_translate("CandidateUpdate", "Delete"))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "Code"))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Description        "))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_3), _translate("CandidateUpdate", "Qualifications"))
+        self.pushButton_14.setText(_translate("CandidateUpdate", "Update"))
+        item = self.tableWidget_6.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "CandidateID"))
+        item = self.tableWidget_6.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "YourID"))
+        item = self.tableWidget_6.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "SANCReceipt"))
+        self.pushButton_15.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_16.setText(_translate("CandidateUpdate", "Delete"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_4), _translate("CandidateUpdate", "SANC Receipts"))
+        self.pushButton_17.setText(_translate("CandidateUpdate", "Delete"))
+        item = self.tableWidget_7.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "Company"))
+        item = self.tableWidget_7.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Policy Number"))
+        item = self.tableWidget_7.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "Expiry Date"))
+        self.pushButton_18.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_19.setText(_translate("CandidateUpdate", "Update"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabIndemnity), _translate("CandidateUpdate", "Indemnity"))
+        self.pushButton_20.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_21.setText(_translate("CandidateUpdate", "Update"))
+        self.pushButton_22.setText(_translate("CandidateUpdate", "Delete"))
+        item = self.tableWidget_8.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "Description"))
+        item = self.tableWidget_8.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Reference Number"))
+        item = self.tableWidget_8.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "Expiry Date"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabExpirations), _translate("CandidateUpdate", "Expirations"))
+        self.pushButton_23.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_24.setText(_translate("CandidateUpdate", "Update"))
+        item = self.tableWidget_9.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "Preferred"))
+        item = self.tableWidget_9.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Client"))
+        item = self.tableWidget_9.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "Candidate Integration Code"))
+        self.pushButton_25.setText(_translate("CandidateUpdate", "Delete"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabLinkedClients), _translate("CandidateUpdate", "Linked Clients"))
+        self.label_149.setText(_translate("CandidateUpdate", "Extra Qualifications"))
+        self.label_150.setText(_translate("CandidateUpdate", "Extra Qualifications"))
+        self.label_151.setText(_translate("CandidateUpdate", "Previous Work Places"))
+        self.label_152.setText(_translate("CandidateUpdate", "Old Contract"))
+        self.label_153.setText(_translate("CandidateUpdate", "Extra Qualifications"))
+        self.label_154.setText(_translate("CandidateUpdate", "Dislikes"))
+        self.label_155.setText(_translate("CandidateUpdate", "Qualifications"))
+        self.pushButton_26.setText(_translate("CandidateUpdate", "New Field..."))
+        self.label_156.setText(_translate("CandidateUpdate", "Proof of Hepatitis B Injection October 2014"))
+        self.label_157.setText(_translate("CandidateUpdate", "Criminal Check"))
+        self.label_158.setText(_translate("CandidateUpdate", "Reference Check"))
+        self.label_159.setText(_translate("CandidateUpdate", "New Med X Contract October 2014"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabUserDefinedFields), _translate("CandidateUpdate", "User-Defined Fields"))
+        self.pushButton_27.setText(_translate("CandidateUpdate", "Update"))
+        self.pushButton_28.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_29.setText(_translate("CandidateUpdate", "Delete"))
+        item = self.tableWidget_10.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "Occurred At"))
+        item = self.tableWidget_10.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Activity Type"))
+        item = self.tableWidget_10.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "User"))
+        item = self.tableWidget_10.horizontalHeaderItem(3)
+        item.setText(_translate("CandidateUpdate", "Note"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabActivities), _translate("CandidateUpdate", "Activities"))
+        self.label_160.setText(_translate("CandidateUpdate", "Created On:"))
+        self.label_161.setText(_translate("CandidateUpdate", "Last Updated On:"))
+        self.label_162.setText(_translate("CandidateUpdate", "Last Updated By:"))
+        self.label_163.setText(_translate("CandidateUpdate", "Last Sanc Warning SMS Sent:"))
+        self.label_164.setText(_translate("CandidateUpdate", "Created By:"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabAdministration), _translate("CandidateUpdate", "Administration"))
+        self.pushButton_30.setText(_translate("CandidateUpdate", "Update"))
+        self.pushButton_31.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_32.setText(_translate("CandidateUpdate", "Delete"))
+        item = self.tableWidget_11.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "FileName"))
+        item = self.tableWidget_11.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Descrition"))
+        item = self.tableWidget_11.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "NodifiedDate"))
+        self.pushButton_33.setText(_translate("CandidateUpdate", "Open"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabAttachments), _translate("CandidateUpdate", "Attachments"))
+        item = self.tableWidget_12.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "DatePaid"))
+        item = self.tableWidget_12.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "PeriodEndDate"))
+        item = self.tableWidget_12.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "NodifiedDate"))
+        item = self.tableWidget_12.horizontalHeaderItem(3)
+        item.setText(_translate("CandidateUpdate", "GrossEarnings"))
+        item = self.tableWidget_12.horizontalHeaderItem(4)
+        item.setText(_translate("CandidateUpdate", "Paye"))
+        item = self.tableWidget_12.horizontalHeaderItem(5)
+        item.setText(_translate("CandidateUpdate", "Uif"))
+        item = self.tableWidget_12.horizontalHeaderItem(6)
+        item.setText(_translate("CandidateUpdate", "Loans"))
+        item = self.tableWidget_12.horizontalHeaderItem(7)
+        item.setText(_translate("CandidateUpdate", "Other"))
+        self.label_165.setText(_translate("CandidateUpdate", "From:"))
+        self.label_166.setText(_translate("CandidateUpdate", "To:"))
+        self.pushButton_34.setText(_translate("CandidateUpdate", "Apply Filter"))
+        self.pushButton_35.setText(_translate("CandidateUpdate", "Clear Filter"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabVIP), _translate("CandidateUpdate", "VIP"))
+        self.pushButton_36.setText(_translate("CandidateUpdate", "Update"))
+        self.pushButton_37.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_38.setText(_translate("CandidateUpdate", "Delete"))
+        item = self.tableWidget_13.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "Course Date"))
+        item = self.tableWidget_13.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Code"))
+        item = self.tableWidget_13.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "Candidate Integration Code"))
+        item = self.tableWidget_13.horizontalHeaderItem(3)
+        item.setText(_translate("CandidateUpdate", "CanidateID"))
+        item = self.tableWidget_13.horizontalHeaderItem(4)
+        item.setText(_translate("CandidateUpdate", "New Column"))
+        item = self.tableWidget_13.horizontalHeaderItem(5)
+        item.setText(_translate("CandidateUpdate", "TrainingCourseCode"))
+        item = self.tableWidget_13.horizontalHeaderItem(6)
+        item.setText(_translate("CandidateUpdate", "CourseDate"))
+        item = self.tableWidget_13.horizontalHeaderItem(7)
+        item.setText(_translate("CandidateUpdate", "ClientID"))
+        item = self.tableWidget_13.horizontalHeaderItem(8)
+        item.setText(_translate("CandidateUpdate", "Created"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_10), _translate("CandidateUpdate", "Completed Training"))
+        self.pushButton_39.setText(_translate("CandidateUpdate", "Update"))
+        self.pushButton_40.setText(_translate("CandidateUpdate", "Delete"))
+        item = self.tableWidget_14.horizontalHeaderItem(0)
+        item.setText(_translate("CandidateUpdate", "Course"))
+        item = self.tableWidget_14.horizontalHeaderItem(1)
+        item.setText(_translate("CandidateUpdate", "Module"))
+        item = self.tableWidget_14.horizontalHeaderItem(2)
+        item.setText(_translate("CandidateUpdate", "Status"))
+        self.pushButton_41.setText(_translate("CandidateUpdate", "Add"))
+        self.pushButton_42.setText(_translate("CandidateUpdate", "Report"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_11), _translate("CandidateUpdate", "Assigned Modules"))
+        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_9), _translate("CandidateUpdate", "Training"))
+        self.pushButton.setText(_translate("CandidateUpdate", "OK"))
+        self.pushButton_2.setText(_translate("CandidateUpdate", "Cancel"))
+        self.pushButton_3.setText(_translate("CandidateUpdate", "Update"))
 
 
-#Some backend
-        self.pushButton.clicked.connect(self.InsertData)
+#END of GUI
+
+        self.Candidate_Select()
+        self.Candidate_Show_Qualifications()
+        self.Candidate_Show_SANC_Receipts()
+        self.Candidate_Show_Indemnity()
+        self.Candidate_Show_Expirations()
+        #self.Candidate_Show_LinkedClients()
+        self.Candidate_Show_Activities()
+        #self.Candidate_Show_Attachments()
+        #self.Candidate_Show_VIP()
+        #self.Candidate_Show_Completed_Training()
+        #self.Candidate_Show_Assigned_Modules()
+        #self.Theme1()
+        #self.pushButton.clicked.connect(self.Candidate_Select)
+        self.pushButton_3.clicked.connect(self.Candidate_Update)
         self.pushButton_7.clicked.connect(self.openWindow1)
-        self.pushButton_15.clicked.connect(self.openWindow2)
-        self.pushButton_18.clicked.connect(self.openWindow3)
-        self.pushButton_20.clicked.connect(self.openWindow4)
-        self.pushButton_23.clicked.connect(self.openWindow5)
-        self.pushButton_28.clicked.connect(self.openWindow6)
-        self.pushButton_31.clicked.connect(self.openWindow7)
-        self.pushButton_37.clicked.connect(self.openWindow8)
-        #self.Candidate_Show_Qualifications()
-        #self.Candidate_Show_Qualifications1()
-        #self.Candidate_Show_Qualifications2()
-        #self.Candidate_Show_Qualifications1()
-        #self.Candidate_Show_Qualifications1()
-        #self.Candidate_Show_SANC_Receipts()
-        self.PassportCountry_Combobox()
-        self.Gender_Combobox()
-        self.CandidateFolder_Combobox()
-        self.CandidateCategory_Combobox()
-        self.MaritalStatus_Combobox()
-        self.EmploymentEquity_Combobox()
-        self.AccountType_Combobox()
-        self.AccountHolderRelationship_Combobox()
-        self.PaymentFrequency_Combobox()
-        self.PayrollPaymentType_Combobox()
-        self.UIFStatus_Combobox()
-        self.comboBox_7.currentTextChanged.connect(self.on_comboBox_7_changed)
-        self.comboBox_2.currentTextChanged.connect(self.on_combobox_2_changed)
-        #self.checkBox_6.clicked.connect(self.CheckButtons1)
-        self.checkBox_6.stateChanged.connect(self.clickBox)
-        self.checkBox_7.stateChanged.connect(self.clickBox1)
-        self.checkBox_8.stateChanged.connect(self.clickBox2)
-        self.checkBox_9.stateChanged.connect(self.clickBox3)
-        self.checkBox_10.stateChanged.connect(self.clickBox4)
+        #self.pushButton_9.clicked.connect(Ui_ProTemp.openWindow11)
+        #self.pushButton_15.clicked.connect(self.openWindow2)
+        ##self.pushButton_18.clicked.connect(self.openWindow3)
+        #self.pushButton_20.clicked.connect(self.openWindow4)
+        #self.pushButton_23.clicked.connect(self.openWindow5)
+        #self.pushButton_28.clicked.connect(self.openWindow6)
+        #self.pushButton_31.clicked.connect(self.openWindow7)
+        #self.pushButton_37.clicked.connect(self.openWindow8)
 
-
-
+        
+        self.msgBox_noStaff = QMessageBox(QMessageBox.Information, "Try Again！", "No Results", QMessageBox.Ok)
+        
         #self.pushButton_9.clicked.connect(self.Theme1)
         #self.pushButton_10.clicked.connect(self.Theme2)
         #self.pushButton_11.clicked.connect(self.Theme3)
 
 
-        self.retranslateUi(CandidateEnrollment)
-        self.MainTabs.setCurrentIndex(0)
-        self.Address.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(CandidateEnrollment)
-        #self.Set_Age()
-
-
-#Passport
-    def on_comboBox_7_changed(self):
-        passport_id = self.comboBox_7.currentText()
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        sql = ''' SELECT Code FROM PassportCountry WHERE Description = %s '''
-        self.cur.execute(sql, [(passport_id)])
-        data = self.cur.fetchone()
-
-        print(data[0])
-        self.lineEdit_35.setText(data[0])   
-
-
-#Gender_code
-    def on_combobox_2_changed(self):
-        gender_id = self.comboBox_2.currentText()
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        sql = ''' SELECT GenderID FROM Gender WHERE Description = %s '''
-        self.cur.execute(sql, [(gender_id)])
-        data = self.cur.fetchone()
-
-        
-        self.lineEdit_36.setText(str(data[0]))   
-        
-
-#Age
-    def Set_Age(self):
-        time.sleep(10.4)
-        Age = self.lineEdit_6.text()   
-        print(Age)          
-
-
-#PassportCountry
-    def PassportCountry_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM PassportCountry ''')
-        data = self.cur.fetchall()
-        
-        for PassportCountry in data :
-            self.comboBox_7.addItem(PassportCountry[0])             
-
-
-#CandidateFolder
-    def CandidateFolder_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM CandidateFolder ''')
-        data = self.cur.fetchall()
-        
-        for CandidateFolder in data :
-            self.comboBox_3.addItem(CandidateFolder[0])      
-
-
-#CandidateCategory
-    def CandidateCategory_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM CandidateCategory ''')
-        data = self.cur.fetchall()
-        
-        for CandidateCategory in data :
-            self.comboBox_4.addItem(CandidateCategory[0])             
-
-
-#MaritalStatus
-    def MaritalStatus_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM MaritalStatus ''')
-        data = self.cur.fetchall()
-        
-        for MaritalStatus in data :
-            self.comboBox_5.addItem(MaritalStatus[0])             
-
-
-#Gender
-    def Gender_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT * FROM Gender ''')
-        data = self.cur.fetchall()
-        
-        for Gender in data :
-            self.comboBox_2.addItem(str(Gender[1]))
-            self.lineEdit_36.setText(Gender[1])  
-               
-
-#EmploymentEquity
-    def EmploymentEquity_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM EmploymentEquity ''')
-        data = self.cur.fetchall()
-        
-        for EmploymentEquity in data :
-            self.comboBox_6.addItem(EmploymentEquity[0])        
-
-
-#AccountType:
-    def AccountType_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM BankAccountType ''')
-        data = self.cur.fetchall()
-        
-        for AccountType in data :
-            self.comboBox_8.addItem(AccountType[0])     
-
-
-#AccountHolderRelationship:
-    def AccountHolderRelationship_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM AccountHolderRelationship ''')
-        data = self.cur.fetchall()
-        
-        for AccountHolderRelationship in data :
-            self.comboBox_9.addItem(AccountHolderRelationship[0])         
-
-
-#PaymentFrequency:
-    def PaymentFrequency_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM PaymentFrequency ''')
-        data = self.cur.fetchall()
-        
-        for PaymentFrequency in data :
-            self.comboBox_11.addItem(PaymentFrequency[0])   
-
-
-#PayrollPaymentType:
-    def PayrollPaymentType_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM PayrollPaymentType ''')
-        data = self.cur.fetchall()
-        
-        for PayrollPaymentType in data :
-            self.comboBox_12.addItem(PayrollPaymentType[0])    
-
-
-#UIFStatus:
-    def UIFStatus_Combobox(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
-                               charset='utf8')
-        self.cur = self.db.cursor()
-              
-        self.cur.execute(''' SELECT Description FROM UIFStatus ''')
-        data = self.cur.fetchall()
-        
-        for UIFStatus in data :
-            self.comboBox_10.addItem(UIFStatus[0])                                                        
-
-
-    def Candidate_Show_Qualifications3(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017',
-                                  db='medx', use_unicode=True,
-                                  charset='utf8')
-        self.cur = self.db.cursor()
-
-        sql = ''' SELECT Description , Code FROM Qualification '''
-        self.cur.execute(sql)
-        data = self.cur.fetchall()
-
-        self.tableWidget.insertRow(0)
-
-        for row, form in enumerate(data):
-            for column, item in enumerate(form):
-                self.tableWidget.setItem(row, column, QTableWidgetItem(str(item)))
-                column += 1
-
-            row_position = self.tableWidget.rowCount()
-            self.tableWidget.insertRow(row_position)
-
-
-    def Candidate_Show_Qualifications2(self):
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017',
-                                  db='medx', use_unicode=True,
-                                  charset='utf8')
-        self.cur = self.db.cursor()
-
-        sql = ''' SELECT Description , Code FROM Qualification '''
-        self.cur.execute(sql)
-        data = self.cur.fetchall()
-
-        self.tableWidget.insertRow(0)
-
-        for row, form in enumerate(data):
-            for column, item in enumerate(form):
-                #QtWidget.QTableWidgetItem()
-                self.tableWidget.setItem(row, column, QtWidget.QTableWidgetItem(str(item)))
-                column += 1
-
-            row_position = self.tableWidget.rowCount()
-            self.tableWidget.insertRow(row_position)
-
-            self.db.close()
-
-
-    def Candidate_Show_Qualifications1(self):
-        candidate_id = self.lineEdit.text()
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017',
-                                  db='medx', use_unicode=True,
-                                  charset='utf8')
-        self.cur = self.db.cursor()
-
-        #sql = ''' SELECT Description , Code FROM Qualification '''
-        #self.cur.execute(sql)
-
-        sql = ''' SELECT Description , Code FROM `Qualification`, `CandidateQualification` WHERE `Qualification`.`﻿QualificationID` = `CandidateQualification`.`QualificationID` AND CandidateID = %s '''
-        self.cur.execute(sql, [(candidate_id)])
-        data = self.cur.fetchall()
-        #data = self.cur.fetchone()
-
-        self.tableWidget.insertRow(0)
-
-        for row, form in enumerate(data):
-            for column, item in enumerate(form):
-                self.tableWidget.setItem(row, column, QTableWidgetItem(str(item)))
-                column += 1
-
-            row_position = self.tableWidget.rowCount()
-            self.tableWidget.insertRow(row_position)
-
-            self.db.close()
-
-
-    def Smssing(self):
-        username = 'pierre@weballround.co.za'
-        password = 'Afj;vn@10'
-        apikey = 'ClMitdv4RUCZAVRr3mAuaQ=='
-        #desnr = '+27814777563'
-        desnr = self.lineEdit_9.text()
-        message = "Welcome to Medx Staff"
-        #message = self.textEdit.toPlainText()
-
-        clickatell = Http(username, password, apikey)
-        response = clickatell.sendMessage([desnr], message)
-
-        print(response) #Returns the headers with all the messages
-
-
-        for entry in response:
-            print(entry) #Returns all the message details per message
-            print(entry["id"])
-            print(entry["destination"])
-            print(entry["error"])
-            print(entry["errorCode"])
-            print("hello world")   
-
-
-    def Candidate_Show_SANC_Receipts(self):
-        candidate_id = self.lineEdit.text()
-        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017',
-                                  db='medx', use_unicode=True,
-                                  charset='utf8')
-        self.cur = self.db.cursor()
-
-        self.cur.execute(''' SELECT CandidateID, YearID, SANCReceipt FROM CandidateSANC ''')
-        data = self.cur.fetchall()
-
-        if data == 0:
-            self.msgBox_noStaff.show()
-        else:
-
-            # print(data)
-            self.tableWidget_6.setRowCount(0)
-            self.tableWidget_6.insertRow(0)
-
-            for row, form in enumerate(data):
-                for column, item in enumerate(form):
-                    self.tableWidget_6.setItem(row, column, QTableWidgetItem(str(item)))
-                    column += 1
-
-                row_position = self.tableWidget_6.rowCount()
-                self.tableWidget_6.insertRow(row_position)
-
-            self.db.close()
-
-
     def dialogbox(self):
-        # self.hide()
+        #self.hide()
         self.myDialog = MyDialog()
         self.myDialog.show()
 
+
     def Theme1(self):
-        style = open('themes/theme1.css', 'r')
+        style = open('themes/theme1.css' , 'r')
+        style = style.read()
+        self.setStyleSheet(style)
+ 
+ 
+    def Theme2(self):
+        style = open('themes/theme2.css' , 'r')
         style = style.read()
         self.setStyleSheet(style)
 
-    def Theme2(self):
-        style = open('themes/theme2.css', 'r')
-        style = style.read()
-        self.setStyleSheet(style)
 
     def Theme3(self):
-        style = open('themes/theme3.css', 'r')
+        style = open('themes/theme3.css' , 'r')
         style = style.read()
         self.setStyleSheet(style)
 
@@ -1650,397 +1589,705 @@ class Ui_CandidateEnrollment(object):
         self.window = QtWidgets.QMainWindow()
         self.ui8 = Ui_CandidateTrainingDetails()
         self.ui8.setupUi(self.window)
-        self.window.show()          
+        self.window.show()
+
+    
+    def Candidate_Select(self):
+        #CandidateID = '15'
+        #self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+        #                       charset='utf8', connect_timeout=6000, wait_timeout=28800, interactive_timeout=28800)
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        data1 = self.cur.fetchone()
+        print(data1[0])
 
 
-        self.retranslateUi(CandidateEnrollment)
-        self.MainTabs.setCurrentIndex(0)
-        self.Address.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(CandidateEnrollment)
-
-    def retranslateUi(self, CandidateEnrollment):
-        _translate = QtCore.QCoreApplication.translate
-        CandidateEnrollment.setWindowTitle(_translate("CandidateEnrollment", "Candidate Details v2.1.120"))
-        self.label_3.setText(_translate("CandidateEnrollment", "Second Name:"))
-        self.label_4.setText(_translate("CandidateEnrollment", "Last Name:"))
-        self.label_14.setText(_translate("CandidateEnrollment", "Telephone Work:"))
-        self.label_18.setText(_translate("CandidateEnrollment", "SANC Number:"))
-        self.label_17.setText(_translate("CandidateEnrollment", "Category:"))
-        self.label_13.setText(_translate("CandidateEnrollment", "Telephone Home:"))
-        self.label_12.setText(_translate("CandidateEnrollment", "Folder (Status):"))
-        self.label_15.setText(_translate("CandidateEnrollment", "Telephone Cell:"))
-        self.label_20.setText(_translate("CandidateEnrollment", "Employment Equity:"))
-        self.label_19.setText(_translate("CandidateEnrollment", "Marital Status:"))
-        self.label_16.setText(_translate("CandidateEnrollment", "Email Address:"))
-        self.label_21.setText(_translate("CandidateEnrollment", "Unit Nr:"))
-        self.label_22.setText(_translate("CandidateEnrollment", "Complex:"))
-        self.label_23.setText(_translate("CandidateEnrollment", "Street Nr:"))
-        self.label_24.setText(_translate("CandidateEnrollment", "Street Name/Farm:"))
-        self.label_25.setText(_translate("CandidateEnrollment", "Suburb/District:"))
-        self.label_26.setText(_translate("CandidateEnrollment", "City/Town:"))
-        self.label_27.setText(_translate("CandidateEnrollment", "Postal Code:"))
-        self.label_28.setText(_translate("CandidateEnrollment", "Country/Region:"))
-        self.Address.setTabText(self.Address.indexOf(self.Phyical), _translate("CandidateEnrollment", "Phyical"))
-        self.label_29.setText(_translate("CandidateEnrollment", "Suburb/District:"))
-        self.label_30.setText(_translate("CandidateEnrollment", "Postal Code:"))
-        self.label_31.setText(_translate("CandidateEnrollment", "Unit Nr:"))
-        self.label_32.setText(_translate("CandidateEnrollment", "Country/Region:"))
-        self.label_33.setText(_translate("CandidateEnrollment", "Street Name/Farm:"))
-        self.label_34.setText(_translate("CandidateEnrollment", "Street Nr:"))
-        self.label_35.setText(_translate("CandidateEnrollment", "City/Town:"))
-        self.label_36.setText(_translate("CandidateEnrollment", "Complex:"))
-        self.Address.setTabText(self.Address.indexOf(self.Postal), _translate("CandidateEnrollment", "Postal"))
-        self.label_37.setText(_translate("CandidateEnrollment", "Complex:"))
-        self.label_38.setText(_translate("CandidateEnrollment", "Unit Nr:"))
-        self.label_39.setText(_translate("CandidateEnrollment", "Street Nr:"))
-        self.label_40.setText(_translate("CandidateEnrollment", "Postal Code:"))
-        self.label_41.setText(_translate("CandidateEnrollment", "Street Name/Farm:"))
-        self.label_42.setText(_translate("CandidateEnrollment", "Suburb/District:"))
-        self.label_43.setText(_translate("CandidateEnrollment", "City/Town:"))
-        self.label_44.setText(_translate("CandidateEnrollment", "Country/Region:"))
-        self.lineEdit_38.setText(_translate("CandidateEnrollment", "Medx Staff"))
-        self.lineEdit_39.setText(_translate("CandidateEnrollment", "36"))
-        self.lineEdit_40.setText(_translate("CandidateEnrollment", "Main Road"))
-        self.lineEdit_42.setText(_translate("CandidateEnrollment", "Strand"))
-        self.lineEdit_43.setText(_translate("CandidateEnrollment", "7140"))
-        self.lineEdit_47.setText(_translate("CandidateEnrollment", "SOUTH AFRICA"))
-        self.Address.setTabText(self.Address.indexOf(self.Work), _translate("CandidateEnrollment", "Work"))
-        self.label_8.setText(_translate("CandidateEnrollment", "Passport Country:"))
-        self.label_5.setText(_translate("CandidateEnrollment", "Initials:"))
-        self.label_10.setText(_translate("CandidateEnrollment", "Date of Birth:"))
-        self.label_7.setText(_translate("CandidateEnrollment", "Age:"))
-        self.label_6.setText(_translate("CandidateEnrollment", "Identification Number:"))
-        self.label_9.setText(_translate("CandidateEnrollment", "Passport Number:"))
-        self.label_11.setText(_translate("CandidateEnrollment", "Gender:"))
-        self.comboBox.setItemText(0, _translate("CandidateEnrollment", "Ms."))
-        self.comboBox.setItemText(1, _translate("CandidateEnrollment", "Mrs."))
-        self.comboBox.setItemText(2, _translate("CandidateEnrollment", "Miss"))
-        self.comboBox.setItemText(3, _translate("CandidateEnrollment", "Mr."))
-        self.comboBox.setItemText(4, _translate("CandidateEnrollment", "Dr."))
-        self.comboBox.setItemText(5, _translate("CandidateEnrollment", "Prof."))
-        self.label_58.setText(_translate("CandidateEnrollment", "Birthday Message:"))
-        self.label_59.setText(_translate("CandidateEnrollment", "Vacancy Notification:"))
-        self.label_60.setText(_translate("CandidateEnrollment", "Payment Notifications:"))
-        self.checkBox_6.setText(_translate("CandidateEnrollment", "Send SMS"))
-        self.checkBox_7.setText(_translate("CandidateEnrollment", "Send SMS"))
-        self.checkBox_8.setText(_translate("CandidateEnrollment", "Payment SMS"))
-        self.checkBox_9.setText(_translate("CandidateEnrollment", "Eligble For Leave"))
-        self.checkBox_10.setText(_translate("CandidateEnrollment", "Own Transpoort"))
-        self.widget.setToolTip(_translate("CandidateEnrollment", "Image"))
-        self.label_2.setText(_translate("CandidateEnrollment", "First Name:"))
-        self.label.setText(_translate("CandidateEnrollment", "Title:"))
-        self.label_61.setText(_translate("CandidateEnrollment", "Candidate ID:"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab), _translate("CandidateEnrollment", "General"))
-        self.label_55.setText(_translate("CandidateEnrollment", "Repayments occur per:"))
-        self.label_56.setText(_translate("CandidateEnrollment", "Bank:"))
-        self.label_49.setText(_translate("CandidateEnrollment", "Account Holder Name:"))
-        self.label_46.setText(_translate("CandidateEnrollment", "Account Name:"))
-        self.label_53.setText(_translate("CandidateEnrollment", "Payment Type:"))
-        self.label_48.setText(_translate("CandidateEnrollment", "Account Type:"))
-        self.label_47.setText(_translate("CandidateEnrollment", "Account Number:"))
-        self.label_51.setText(_translate("CandidateEnrollment", "Registerd:"))
-        self.label_52.setText(_translate("CandidateEnrollment", "Payment Frequency:"))
-        self.label_50.setText(_translate("CandidateEnrollment", "Account Holder Relationship:"))
-        self.label_45.setText(_translate("CandidateEnrollment", "Branch Code:"))
-        self.label_54.setText(_translate("CandidateEnrollment", "Maximum Payback Amount:"))
-        self.label_80.setText(_translate("CandidateEnrollment", "<html><head/><body><p><span style=\" color:#0000ff;\">Financial Details</span></p></body></html>"))
-        self.label_81.setText(_translate("CandidateEnrollment", "________________________________________________________"))
-        self.label_84.setText(_translate("CandidateEnrollment", "<html><head/><body><p><span style=\" color:#0000ff;\">Account Information</span></p></body></html>"))
-        self.label_85.setText(_translate("CandidateEnrollment", "________________________________________________________"))
-        self.label_82.setText(_translate("CandidateEnrollment", "<html><head/><body><p><span style=\" color:#0000ff;\">Tax</span></p></body></html>"))
-        self.label_83.setText(_translate("CandidateEnrollment", "_______________________________________________________________________"))
-        self.label_62.setText(_translate("CandidateEnrollment", "Tax Status:"))
-        self.label_63.setText(_translate("CandidateEnrollment", "Income Tax nr:"))
-        self.label_64.setText(_translate("CandidateEnrollment", "Engaged:"))
-        self.label_65.setText(_translate("CandidateEnrollment", "Discharged:"))
-        self.label_66.setText(_translate("CandidateEnrollment", "UIF Registrerd:"))
-        self.label_67.setText(_translate("CandidateEnrollment", "UIF Status:"))
-        self.label_88.setText(_translate("CandidateEnrollment", "___________________________________"))
-        self.label_86.setText(_translate("CandidateEnrollment", "<html><head/><body><p><span style=\" color:#0000ff;\">Medical / Pension / Provident</span></p></body></html>"))
-        self.label_70.setText(_translate("CandidateEnrollment", "Medical Aid Start Date:"))
-        self.label_71.setText(_translate("CandidateEnrollment", "Medical Aid Dependants:"))
-        self.label_72.setText(_translate("CandidateEnrollment", "Pension Fund Start Date:"))
-        self.label_73.setText(_translate("CandidateEnrollment", "Provident Fund Start Date:"))
-        self.pushButton_5.setText(_translate("CandidateEnrollment", "Delete"))
-        self.pushButton_6.setText(_translate("CandidateEnrollment", "Add"))
-        self.radioButton_3.setText(_translate("CandidateEnrollment", "Month"))
-        self.radioButton_4.setToolTip(_translate("CandidateEnrollment", "Day3"))
-        self.radioButton_4.setWhatsThis(_translate("CandidateEnrollment", "Day2"))
-        self.radioButton_4.setText(_translate("CandidateEnrollment", "Payroll Run"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_2), _translate("CandidateEnrollment", "Payroll"))
-        self.pushButton_7.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_8.setText(_translate("CandidateEnrollment", "Delete"))
-        item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "Code"))
-        item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Description        "))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_3), _translate("CandidateEnrollment", "Qualifications"))
-        self.pushButton_14.setText(_translate("CandidateEnrollment", "Update"))
-        item = self.tableWidget_6.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "CandidateID"))
-        item = self.tableWidget_6.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "YourID"))
-        item = self.tableWidget_6.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "SANCReceipt"))
-        self.pushButton_15.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_16.setText(_translate("CandidateEnrollment", "Delete"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_4), _translate("CandidateEnrollment", "SANC Receipts"))
-        self.pushButton_17.setText(_translate("CandidateEnrollment", "Delete"))
-        item = self.tableWidget_7.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "Company"))
-        item = self.tableWidget_7.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Policy Number"))
-        item = self.tableWidget_7.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "Expiry Date"))
-        self.pushButton_18.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_19.setText(_translate("CandidateEnrollment", "Update"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabIndemnity), _translate("CandidateEnrollment", "Indemnity"))
-        self.pushButton_20.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_21.setText(_translate("CandidateEnrollment", "Update"))
-        self.pushButton_22.setText(_translate("CandidateEnrollment", "Delete"))
-        item = self.tableWidget_8.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "Description"))
-        item = self.tableWidget_8.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Reference Number"))
-        item = self.tableWidget_8.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "Expiry Date"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabExpirations), _translate("CandidateEnrollment", "Expirations"))
-        self.pushButton_23.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_24.setText(_translate("CandidateEnrollment", "Update"))
-        item = self.tableWidget_9.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "Preferred"))
-        item = self.tableWidget_9.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Client"))
-        item = self.tableWidget_9.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "Candidate Integration Code"))
-        self.pushButton_25.setText(_translate("CandidateEnrollment", "Delete"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabLinkedClients), _translate("CandidateEnrollment", "Linked Clients"))
-        self.label_149.setText(_translate("CandidateEnrollment", "Extra Qualifications"))
-        self.label_150.setText(_translate("CandidateEnrollment", "Extra Qualifications"))
-        self.label_151.setText(_translate("CandidateEnrollment", "Previous Work Places"))
-        self.label_152.setText(_translate("CandidateEnrollment", "Old Contract"))
-        self.label_153.setText(_translate("CandidateEnrollment", "Extra Qualifications"))
-        self.label_154.setText(_translate("CandidateEnrollment", "Dislikes"))
-        self.label_155.setText(_translate("CandidateEnrollment", "Qualifications"))
-        self.pushButton_26.setText(_translate("CandidateEnrollment", "New Field..."))
-        self.label_156.setText(_translate("CandidateEnrollment", "Proof of Hepatitis B Injection October 2014"))
-        self.label_157.setText(_translate("CandidateEnrollment", "Criminal Check"))
-        self.label_158.setText(_translate("CandidateEnrollment", "Reference Check"))
-        self.label_159.setText(_translate("CandidateEnrollment", "New Med X Contract October 2014"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabUserDefinedFields), _translate("CandidateEnrollment", "User-Defined Fields"))
-        self.pushButton_27.setText(_translate("CandidateEnrollment", "Update"))
-        self.pushButton_28.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_29.setText(_translate("CandidateEnrollment", "Delete"))
-        item = self.tableWidget_10.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "Occurred At"))
-        item = self.tableWidget_10.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Activity Type"))
-        item = self.tableWidget_10.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "User"))
-        item = self.tableWidget_10.horizontalHeaderItem(3)
-        item.setText(_translate("CandidateEnrollment", "Note"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabActivities), _translate("CandidateEnrollment", "Activities"))
-        self.label_160.setText(_translate("CandidateEnrollment", "Created On:"))
-        self.label_161.setText(_translate("CandidateEnrollment", "Last Updated On:"))
-        self.label_162.setText(_translate("CandidateEnrollment", "Last Updated By:"))
-        self.label_163.setText(_translate("CandidateEnrollment", "Last Sanc Warning SMS Sent:"))
-        self.label_164.setText(_translate("CandidateEnrollment", "Created By:"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabAdministration), _translate("CandidateEnrollment", "Administration"))
-        self.pushButton_30.setText(_translate("CandidateEnrollment", "Update"))
-        self.pushButton_31.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_32.setText(_translate("CandidateEnrollment", "Delete"))
-        item = self.tableWidget_11.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "FileName"))
-        item = self.tableWidget_11.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Descrition"))
-        item = self.tableWidget_11.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "NodifiedDate"))
-        self.pushButton_33.setText(_translate("CandidateEnrollment", "Open"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabAttachments), _translate("CandidateEnrollment", "Attachments"))
-        item = self.tableWidget_12.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "DatePaid"))
-        item = self.tableWidget_12.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "PeriodEndDate"))
-        item = self.tableWidget_12.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "NodifiedDate"))
-        item = self.tableWidget_12.horizontalHeaderItem(3)
-        item.setText(_translate("CandidateEnrollment", "GrossEarnings"))
-        item = self.tableWidget_12.horizontalHeaderItem(4)
-        item.setText(_translate("CandidateEnrollment", "Paye"))
-        item = self.tableWidget_12.horizontalHeaderItem(5)
-        item.setText(_translate("CandidateEnrollment", "Uif"))
-        item = self.tableWidget_12.horizontalHeaderItem(6)
-        item.setText(_translate("CandidateEnrollment", "Loans"))
-        item = self.tableWidget_12.horizontalHeaderItem(7)
-        item.setText(_translate("CandidateEnrollment", "Other"))
-        self.label_165.setText(_translate("CandidateEnrollment", "From:"))
-        self.label_166.setText(_translate("CandidateEnrollment", "To:"))
-        self.pushButton_34.setText(_translate("CandidateEnrollment", "Apply Filter"))
-        self.pushButton_35.setText(_translate("CandidateEnrollment", "Clear Filter"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.TabVIP), _translate("CandidateEnrollment", "VIP"))
-        self.pushButton_36.setText(_translate("CandidateEnrollment", "Update"))
-        self.pushButton_37.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_38.setText(_translate("CandidateEnrollment", "Delete"))
-        item = self.tableWidget_13.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "Course Date"))
-        item = self.tableWidget_13.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Code"))
-        item = self.tableWidget_13.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "Candidate Integration Code"))
-        item = self.tableWidget_13.horizontalHeaderItem(3)
-        item.setText(_translate("CandidateEnrollment", "CanidateID"))
-        item = self.tableWidget_13.horizontalHeaderItem(4)
-        item.setText(_translate("CandidateEnrollment", "New Column"))
-        item = self.tableWidget_13.horizontalHeaderItem(5)
-        item.setText(_translate("CandidateEnrollment", "TrainingCourseCode"))
-        item = self.tableWidget_13.horizontalHeaderItem(6)
-        item.setText(_translate("CandidateEnrollment", "CourseDate"))
-        item = self.tableWidget_13.horizontalHeaderItem(7)
-        item.setText(_translate("CandidateEnrollment", "ClientID"))
-        item = self.tableWidget_13.horizontalHeaderItem(8)
-        item.setText(_translate("CandidateEnrollment", "Created"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_10), _translate("CandidateEnrollment", "Completed Training"))
-        self.pushButton_39.setText(_translate("CandidateEnrollment", "Update"))
-        self.pushButton_40.setText(_translate("CandidateEnrollment", "Delete"))
-        item = self.tableWidget_14.horizontalHeaderItem(0)
-        item.setText(_translate("CandidateEnrollment", "Course"))
-        item = self.tableWidget_14.horizontalHeaderItem(1)
-        item.setText(_translate("CandidateEnrollment", "Module"))
-        item = self.tableWidget_14.horizontalHeaderItem(2)
-        item.setText(_translate("CandidateEnrollment", "Status"))
-        self.pushButton_41.setText(_translate("CandidateEnrollment", "Add"))
-        self.pushButton_42.setText(_translate("CandidateEnrollment", "Report"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_11), _translate("CandidateEnrollment", "Assigned Modules"))
-        self.MainTabs.setTabText(self.MainTabs.indexOf(self.tab_9), _translate("CandidateEnrollment", "Training"))
-        self.pushButton.setText(_translate("CandidateEnrollment", "OK"))
-        self.pushButton_2.setText(_translate("CandidateEnrollment", "Cancel"))
-        self.pushButton_3.setText(_translate("CandidateEnrollment", "Update"))
+        sql = ''' SELECT * FROM Candidate_live WHERE CandidateID = %s '''
+        self.cur.execute(sql , [(data1[0])])
+        data = self.cur.fetchone()
+        print(str(data[13:3]))
+        
+        self.comboBox.addItem(data[8])
+        #self.dateEdit_10.setDate(int(data[8]))
+        self.lcdNumber.display(data[0])
+        self.lineEdit.setText(data[10])
+        self.lineEdit_2.setText(data[54])
+        self.lineEdit_3.setText(data[11])
+        self.lineEdit_4.setText(data[9])
+        self.lineEdit_5.setText(data[13])
+        self.lineEdit_6.setText(data[55])
+        #self.dateEdit_10.setDate(int(data[14:(1)]))
+        #self.dateEdit_10.setDate(int(data[14:(1,2,3)]))
+        #self.dateEdit_10.setDate(int(data[14:(1,2,3)]))
+        self.lineEdit_7.setText(data[17])
+        self.lineEdit_8.setText(data[18])
+        #self.label_57.setText(str(data[13:3]))Birthday Message:
+        self.comboBox_7.addItem(data[56])
+        self.lineEdit_35.setText(data[56])
+        self.lineEdit_36.setText(data[15])
+        self.comboBox_2.addItem(data[15])
+        #self.lineEdit_8.setText(data[56])
+        self.lineEdit_9.setText(data[19])
+        self.lineEdit_10.setText(data[20])
+        #self.dateEdit_10.setDate(str(data[14:(1,2,3)]))
+        #self.lineEdit_11.setText(data[15])
+        self.lineEdit_49.setText(data[5])
+        self.comboBox_3.addItem(data[5])
+        self.lineEdit_11.setText(data[24])
+        self.lineEdit_12.setText(data[60])
+        self.lineEdit_13.setText(data[61])
+        self.lineEdit_14.setText(data[62])
+        self.lineEdit_15.setText(data[63])
+        self.lineEdit_16.setText(data[64])
+        self.lineEdit_17.setText(data[65])
+        self.lineEdit_18.setText(data[66])
+        self.lineEdit_19.setText(data[67])
+        self.lineEdit_50.setText(data[6])
+        #self.comboBox_4.addItem(data[6])
+        self.lineEdit_51.setText(data[16])
+        #self.comboBox_5.addItem(data[16])
+        self.lineEdit_52.setText(data[43])
+        self.comboBox_6.addItem(data[43])
+        self.lineEdit_21.setText(data[60])
+        self.lineEdit_22.setText(data[61])
+        self.lineEdit_23.setText(data[62])
+        #self.lineEdit_24.setText(data[63])
+        #self.lineEdit_25.setText(data[64])
+        self.lineEdit_26.setText(data[69])
+        #self.lineEdit_27.setText(data[66])
+        self.lineEdit_29.setText(data[68])
+        self.lineEdit_30.setText(data[70])
+        self.lineEdit_31.setText(data[71])
+        self.lineEdit_32.setText(data[72])
+        self.lineEdit_33.setText(data[73])
+        self.lineEdit_34.setText(data[74])
+        self.lineEdit_44.setText(data[75])
+        self.lineEdit_37.setText(data[76])
+        self.lineEdit_38.setText(data[77])
+        self.lineEdit_39.setText(data[78])
+        self.lineEdit_40.setText(data[79])
+        self.lineEdit_41.setText(data[80])
+        self.lineEdit_42.setText(data[81])
+        self.lineEdit_43.setText(data[83])
+        self.lineEdit_47.setText(data[82])
+        #self.lineEdit_74.setText(data[27])
+        self.lineEdit_45.setText(data[28])
+        self.lineEdit_46.setText(data[29])
+        #self.lineEdit_51.setText(data[31])
+        #self.lineEdit_52.setText(data[58])
+        self.lineEdit_53.setText(data[31])
+        #self.comboBox_8.addItem(data[32])
+        #self.dateEdit_3.setText(data[34])
+        self.comboBox_11.addItem(data[35])
+        self.comboBox_12.addItem(data[36])
+        self.lineEdit_54.setText(data[37])
+        self.lineEdit_55.setText(data[38])
+        #self.lineEdit_62.setText(data[39])
+        #self.lineEdit_63.setText(data[59])
+        #self.dateEdit_7.setText(data[41])
+        #self.lineEdit_65.setText(data[42])
+        #self.checkBox_11.setText(data[43])
+        self.comboBox_10.addItem(data[44])
+        #self.dateEdit_4.setText(data[45])
+        #self.lineEdit_71.setText(data[46])
+        #self.dateEdit_5.setText(data[47])
+        self.Gender_Combobox()
+        self.PassportCountry_Combobox()
+        self.CandidateFolder_Combobox()
+        self.CandidateCategory_Combobox()
+        self.MaritalStatus_Combobox()
+        self.EmploymentEquity_Combobox()
+        self.AccountType_Combobox()
+        self.AccountHolderRelationship_Combobox()
+        #self.PaymentFrequency_Combobox()
+        #self.PayrollPaymentType_Combobox()
+        #self.UIFStatus_Combobox()
+        self.db.close()
 
 
-#checkBox_6
-    def clickBox(self, state):
+#PassportCountry
+    def PassportCountry_Combobox(self):
+        code = self.lineEdit_35.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM PassportCountry WHERE Code = %s '''
+        self.cur.execute(sql, (code))
 
-        if state == QtCore.Qt.Checked:
-            print('Checked1')
+        data = self.cur.fetchone()
+
+        self.comboBox_7.clear()        
+        self.comboBox_7.addItem(str(data[0]))
+        
+
+#Gender
+    def Gender_Combobox(self):
+        genderid = self.lineEdit_36.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM Gender WHERE GenderID = %s '''
+        self.cur.execute(sql, (genderid))
+
+        data = self.cur.fetchone()
+        
+        self.comboBox_2.clear()
+        self.comboBox_2.addItem(str(data[0]))
+
+
+#CandidateFolder
+    def CandidateFolder_Combobox(self):
+        candidatefolderid = self.lineEdit_49.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+
+        sql = ''' SELECT Description FROM CandidateFolder WHERE CandidateFolderID = %s '''
+        self.cur.execute(sql, (candidatefolderid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_3.clear()
+        self.comboBox_3.addItem(str(data[0]))
+
+
+#CandidateCategory
+    def CandidateCategory_Combobox(self):
+        candidatecategoryid = self.lineEdit_50.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM CandidateCategory WHERE CandidateCategoryID = %s '''
+        self.cur.execute(sql, (candidatecategoryid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_4.clear()
+        self.comboBox_4.addItem(str(data[0]))
+        
+
+
+#MaritalStatus
+    def MaritalStatus_Combobox(self):
+        maritalstatusid = self.lineEdit_51.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = '''  SELECT Description FROM MaritalStatus WHERE MaritalStatusID = %s '''
+        self.cur.execute(sql, (maritalstatusid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_5.clear()
+        self.comboBox_5.addItem(str(data[0]))
+
+
+#EmploymentEquity
+    def EmploymentEquity_Combobox(self):
+        employmentequityid = self.lineEdit_52.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM EmploymentEquity WHERE EmploymentEquityID = %s '''
+        self.cur.execute(sql, (employmentequityid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_6.clear()
+        self.comboBox_6.addItem(data[0])    
+
+
+#AccountType:
+    def AccountType_Combobox(self):
+        bankaccounttypeid = self.lineEdit_53.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM BankAccountType WHERE BankAccountTypeID = %s '''
+        self.cur.execute(sql, (bankaccounttypeid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_8.clear()
+        self.comboBox_8.addItem(data[0])     
+
+
+#AccountHolderRelationship:
+    def AccountHolderRelationship_Combobox(self):
+        code = self.lineEdit_54.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM AccountHolderRelationship WHERE Code = %s '''
+        self.cur.execute(sql, (code))
+        data = self.cur.fetchone()
+        
+        self.comboBox_9.clear()
+        self.comboBox_9.addItem(data[0])         
+
+
+#PaymentFrequency:
+    def PaymentFrequency_Combobox(self):
+        paymentfrequencyid = self.lineEdit_55.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM PaymentFrequency WHERE PaymentFrequencyID = %s '''
+        self.cur.execute(sql, (paymentfrequencyid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_11.clear()
+        self.comboBox_11.addItem(data[0])    
+
+
+#PayrollPaymentType:
+    def PayrollPaymentType_Combobox(self):
+        payrollpaymenttypeid = self.lineEdit_56.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM PayrollPaymentType WHERE PayrollPaymentTypeID = %s '''
+        self.cur.execute(sql, (payrollpaymenttypeid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_12.clear()
+        self.comboBox_12.addItem(data[0])      
+
+
+#UIFStatus:
+    def UIFStatus_Combobox(self):
+        code = self.lineEdit_57.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM UIFStatus WHERE Code = %s '''
+        self.cur.execute(sql, (code))
+        data = self.cur.fetchone()
+        
+        self.comboBox_13.clear()
+        self.comboBox_13.addItem(data[0])                                                          
+
+
+#Candidate_Show_Qualifications
+    def Candidate_Show_Qualifications(self):
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()
+        #print(data1[0])
+
+
+        sql = ''' SELECT Description , Code FROM `Qualification`, `CandidateQualification` WHERE `Qualification`.`﻿QualificationID` = `CandidateQualification`.`QualificationID` AND CandidateID = %s '''
+        self.cur.execute(sql, [(candidate_id)])
+        data = self.cur.fetchall()
+        #data = self.cur.fetchone()
+
+        self.tableWidget.insertRow(0)
+
+        for row , form in enumerate(data):
+            for column , item in enumerate(form):
+                #self.tableWidget.setItem(row, column, QTableWidgetItem(str(item)))
+                self.tableWidget.setItem(row , column , QTableWidgetItem(str(item)))
+                column += 1
+
+            row_position = self.tableWidget.rowCount()
+            self.tableWidget.insertRow(row_position)
+                
+            
+            
+    
+    def Candidate_Show_SANC_Receipts(self):
+        #CandidateID = '3'
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()
+        
+        sql = ''' SELECT CandidateID, YearID, SANCReceipt FROM CandidateSANC WHERE CandidateID = %s  '''
+        self.cur.execute(sql, [(candidate_id)])
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
         else:
-            print('Unchecked1')
+        
+            #print(data)
+            self.tableWidget_6.setRowCount(0)
+            self.tableWidget_6.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_6.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_6.rowCount()
+                self.tableWidget_6.insertRow(row_position)
+                
+            self.db.close()
+        
 
+    def Candidate_Show_Indemnity(self):
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
 
-
-
-#checkBox_7
-    def clickBox1(self, state):
-
-        if state == QtCore.Qt.Checked:
-            print('Checked2')
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()
+        
+        sql = ''' SELECT Company, PolicyNumber, ExpiryDate  FROM CandidateIndemnity WHERE CandidateID = %s '''
+        self.cur.execute(sql, [(candidate_id)])
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
         else:
-            print('Unchecked2')
-
-
-
-
-#checkBox_8
-    def clickBox2(self, state):
-
-        if state == QtCore.Qt.Checked:
-            print('Checked3')
-        else:
-            print('Unchecked3')
-
-
-
-
-#checkBox_9
-    def clickBox3(self, state):
-
-        if state == QtCore.Qt.Checked:
-            print('Checked4')
-        else:
-            print('Unchecked4')
-
-
-
-
-#checkBox_10
-    def clickBox4(self, state):
-
-        if state == QtCore.Qt.Checked:
-            print('Checked5')
-        else:
-            print('Unchecked5')            
+        
+            #print(data)
+            self.tableWidget_7.setRowCount(0)
+            self.tableWidget_7.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_7.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_7.rowCount()
+                self.tableWidget_7.insertRow(row_position)
+                
+            self.db.close()
             
 
+    def Candidate_Show_Expirations(self):
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
 
 
-    def InsertData(self):
-        con = pymysql.connect(host='129.232.195.18',
-                             user='pierreb',
-                             password='Springboks2017',                             
-                             db='medx',
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
-        with con:
-                cur = con.cursor()
-                cur.execute("INSERT INTO Candidate_live(Title, FirstName, SecondName, LastName, Initial, IdentificationNumber, PassportCountryCode, PassportNumber, DateOfBirth, GenderID, CandidateFolderID, TelephoneHome, TelephoneWork, TelephoneCell, EmailAddress, CandidateCategoryID, SANCNumber, MaritalStatusID, EmploymentEquityID, PhysicalAddressUnitNumber, PhysicalAddressComplex, PhysicalAddressStreetNumber, PhysicalAddressStreetName, PhysicalAddressSuburb, PhysicalAddressCity, PhysicalAddressPostalCode, PhysicalAddressCountry, PostalAddressPostalNumber, PostalAddressTypeOfService, PostalAddressStreetNumber, PostalAddressStreetName, PostalAddressSuburb, PostalAddressCity, PostalAddressPostalCode, PostalAddressCountry, WorkAddressUnitNumber, WorkAddressComplex, WorkAddressStreetNumber, WorkAddressStreetName, WorkAddressSuburb, WorkAddressCity, WorkAddressPostalCode, WorkAddressCountry, BankName, BankBranchCode, BankAccountName, BankAccountNumber, BankAccountTypeID, AccountHolderName)"
-                            "VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" %(''.join(self.comboBox.currentText()),
-                                                                                    ''.join(self.lineEdit.text()),
-                                                                                    ''.join(self.lineEdit_2.text()),
-                                                                                    ''.join(self.lineEdit_3.text()),
-                                                                                    ''.join(self.lineEdit_4.text()),
-                                                                                    ''.join(self.lineEdit_5.text()),
-                                                                                    ''.join(self.lineEdit_35.text()),
-                                                                                    ''.join(self.lineEdit_6.text()),
-                                                                                    ''.join(self.dateEdit_10.text()),
-                                                                                    ''.join(self.lineEdit_36.text()),
-                                                                                    ''.join(self.lineEdit_49.text()),
-                                                                                    ''.join(self.lineEdit_7.text()),
-                                                                                    ''.join(self.lineEdit_8.text()),
-                                                                                    ''.join(self.lineEdit_9.text()),
-                                                                                    ''.join(self.lineEdit_10.text()),
-                                                                                    ''.join(self.lineEdit_50.text()),
-                                                                                    ''.join(self.lineEdit_11.text()),
-                                                                                    ''.join(self.lineEdit_51.text()),
-                                                                                    ''.join(self.lineEdit_52.text()),
-                                                                                    ''.join(self.lineEdit_12.text()),
-                                                                                    ''.join(self.lineEdit_13.text()),
-                                                                                    ''.join(self.lineEdit_14.text()),
-                                                                                    ''.join(self.lineEdit_15.text()),
-                                                                                    ''.join(self.lineEdit_16.text()),
-                                                                                    ''.join(self.lineEdit_17.text()),
-                                                                                    ''.join(self.lineEdit_18.text()),
-                                                                                    ''.join(self.lineEdit_19.text()),
-                                                                                    ''.join(self.lineEdit_29.text()),
-                                                                                    ''.join(self.lineEdit_30.text()),
-                                                                                    ''.join(self.lineEdit_31.text()),
-                                                                                    ''.join(self.lineEdit_32.text()),
-                                                                                    ''.join(self.lineEdit_33.text()),
-                                                                                    ''.join(self.lineEdit_34.text()),
-                                                                                    ''.join(self.lineEdit_44.text()),
-                                                                                    ''.join(self.lineEdit_44.text()),
-                                                                                    ''.join(self.lineEdit_37.text()),
-                                                                                    ''.join(self.lineEdit_38.text()),
-                                                                                    ''.join(self.lineEdit_39.text()),
-                                                                                    ''.join(self.lineEdit_40.text()),
-                                                                                    ''.join(self.lineEdit_41.text()),
-                                                                                    ''.join(self.lineEdit_42.text()),
-                                                                                    ''.join(self.lineEdit_43.text()),
-                                                                                    ''.join(self.lineEdit_47.text()),
-                                                                                    ''.join(self.lineEdit_20.text()),
-                                                                                    ''.join(self.lineEdit_21.text()),
-                                                                                    ''.join(self.lineEdit_22.text()),
-                                                                                    ''.join(self.lineEdit_23.text()),
-                                                                                    ''.join(self.comboBox_8.currentText()),
-                                                                                    ''.join(self.lineEdit_24.text())))
-        print("Candidate Enrolled Successfully")
-        self.Smssing()
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()
+
+        
+        sql = ''' SELECT Description, ReferenceNumber, ExpiryDate  FROM CandidateExpiration WHERE CandidateID = %s '''
+        self.cur.execute(sql, [(candidate_id)])
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
+        else:
+        
+            #print(data)
+            self.tableWidget_8.setRowCount(0)
+            self.tableWidget_8.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_8.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_8.rowCount()
+                self.tableWidget_8.insertRow(row_position)
+                
+            self.db.close()
+            
+
+    def Candidate_Show_LinkedClients(self):
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()
+
+        
+        sql = self.cur.execute(''' SELECT IsPreferredClient, ClientID, CandidateIntegrationCode  FROM CandidateID ''')
+        self.cur.execute(sql, [(candidate_id)])
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
+        else:
+        
+            #print(data)
+            self.tableWidget_9.setRowCount(0)
+            self.tableWidget_9.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_9.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_9.rowCount()
+                self.tableWidget_9.insertRow(row_position)
+                
+            self.db.close()
+            
+            
+    def Candidate_Show_Activities(self):
+        candidate_id = '3'
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+
+        #candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        #candidate_id_test = self.cur.execute(candidate_id_sql)
+        #candidate_id = self.cur.fetchone()  
+
+        
+        sql = ''' SELECT OccurredAt, ActivityTypeID, UserID, Note  FROM CandidateActivity WHERE CandidateID = %s '''
+        self.cur.execute(sql, [(candidate_id)])        
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
+        else:
+        
+            #print(data)
+            self.tableWidget_10.setRowCount(0)
+            self.tableWidget_10.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_10.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_10.rowCount()
+                self.tableWidget_10.insertRow(row_position)
+                
+            self.db.close()
+          
+           
+    def Candidate_Show_Attachments(self):
+        candidate_id = self.lineEdit.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()  
+
+        
+        sql  = self.cur.execute(''' SELECT FileName, Description, ModifiedDate FROM CandidateAttachment ''')
+        self.cur.execute(sql, [(candidate_id)])        
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
+        else:
+        
+            #print(data)
+            self.tableWidget_11.setRowCount(0)
+            self.tableWidget_11.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_11.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_11.rowCount()
+                self.tableWidget_11.insertRow(row_position)
+                
+            self.db.close()
+            
+            
+    def Candidate_Show_VIP(self):
+        candidate_id = self.lineEdit.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()  
+
+        
+        sql = self.cur.execute(''' SELECT DatePaid, PeriodEndDate, PeriodEndDate, GrossEarnings, Paye, Uif, Loans, Advance, Other, OtherNote, NettPay FROM PayrollVIPFile ''')
+        self.cur.execute(sql, [(candidate_id)])        
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
+        else:
+        
+            #print(data)
+            self.tableWidget_12.setRowCount(0)
+            self.tableWidget_12.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_12.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_12.rowCount()
+                self.tableWidget_12.insertRow(row_position)
+                
+            self.db.close()
+            
+            
+    def Candidate_Show_Completed_Training(self):
+        candidate_id = '382'
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+
+        #candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        #candidate_id_test = self.cur.execute(candidate_id_sql)
+        #candidate_id = self.cur.fetchone()  
+
+        
+        sql = self.cur.execute(''' SELECT CourseDate, ClientID, TrainingCourseCode, TrainingCourseCode, CourseDate, ClientID, CreatedAt, CreatedBy FROM CandidateTraining ''')
+        self.cur.execute(sql, [(candidate_id)])        
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
+        else:
+        
+            #print(data)
+            self.tableWidget_13.setRowCount(0)
+            self.tableWidget_13.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_13.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_13.rowCount()
+                self.tableWidget_13.insertRow(row_position)
+                
+            self.db.close()
+            
+            
+    def Candidate_Show_Assigned_Modules(self):
+        candidate_id = self.lineEdit.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+
+
+        candidate_id_sql = ''' SELECT CandidateID FROM Candidate_Workspace '''
+        candidate_id_test = self.cur.execute(candidate_id_sql)
+        candidate_id = self.cur.fetchone()  
+
+        
+        sql = self.cur.execute(''' SELECT TrainingCourseCode, ModuleId, ModuleId FROM TrainingModule ''')
+        self.cur.execute(sql, [(candidate_id)])        
+        data = self.cur.fetchall()
+              
+            
+        if data == 0:
+            self.msgBox_noStaff.show()
+        else:
+        
+            #print(data)
+            self.tableWidget_14.setRowCount(0)
+            self.tableWidget_14.insertRow(0)
+            
+            for row , form in enumerate(data):
+                for column , item in enumerate(form):
+                   self.tableWidget_14.setItem(row , column , QTableWidgetItem(str(item)))
+                   column += 1
+                    
+                row_position = self.tableWidget_14.rowCount()
+                self.tableWidget_14.insertRow(row_position)
+                
+            self.db.close()
+        
+
+    def Candidate_Update(self):
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+        
+        title = self.comboBox.currentText()    
+        first_name = self.lineEdit.text()    
+        second_name = self.lineEdit_2.text()
+        last_name = self.lineEdit_3.text()
+        initials = self.lineEdit_4.text()
+        identification_number = self.lineEdit_5.text()
+        passport_country = self.lineEdit_35.text()
+        #passport_country = comboBox_7.currentText()
+        passport_number = self.lineEdit_6.text()
+        gender = self.comboBox_2.currentText()
+        folder = self.comboBox_3.currentText()
+        telephone_home = self.lineEdit_7.text()
+        telephone_work = self.lineEdit_8.text()
+        telephone_cell = self.lineEdit_9.text()
+        email_address = self.lineEdit_10.text()
+        category = self.comboBox_4.currentText()
+        sanc_number = self.lineEdit_11.text()
+        marital_status = self.comboBox_5.currentText()
+        employment_equity = self.lineEdit_52.text()
+        postal_addressPostal_code = self.lineEdit_34.text()
+        postal_address_country = self.lineEdit_44.text()
+         
+                
+        #search_candidate_id = self.lineEdit.text()
+        search_candidate_id = self.lcdNumber.value()
+
+
+        #sql = "UPDATE Candidate_live SET Title=%s ,FirstName=%s ,SecondName=%s ,LastName=%s ,Initial=%s ,IdentificationNumber=%s, PassportCountryCode=%s, PassportNumber=%s, GenderID=%s, CandidateFolderID=%s, TelephoneHome=%s , TelephoneWork=%s, TelephoneCell=%s, EmailAddress=%s, CandidateCategoryID=%s, SANCNumber=%s, MaritalStatusID=%s, EmploymentEquityID=%s WHERE CandidateID = %s"
+        #self.cur.execute(sql, [(title, first_name, second_name, last_name, initials, identification_number, passport_country, passport_number, gender, folder, telephone_home, telephone_work, telephone_cell, email_address, category, sanc_number, marital_status, employment_equity, search_candidate_id)]) 
+        self.cur.execute('''UPDATE Candidate_live SET Title=%s ,FirstName=%s ,SecondName=%s ,LastName=%s ,Initial=%s ,IdentificationNumber=%s, PassportCountryCode=%s, PassportNumber=%s, GenderID=%s, CandidateFolderID=%s, TelephoneHome=%s , TelephoneWork=%s, TelephoneCell=%s, EmailAddress=%s, CandidateCategoryID=%s, SANCNumber=%s, MaritalStatusID=%s, EmploymentEquityID=%s, PostalAddressPostalCode=%s, PostalAddressCountry=%s WHERE CandidateID = %s
+        ''', (title, first_name, second_name, last_name, initials, identification_number, passport_country, passport_number, gender, folder, telephone_home, telephone_work, telephone_cell, email_address, category, sanc_number, marital_status, employment_equity, postal_addressPostal_code, postal_address_country,  search_candidate_id))
+        
+        #self.cur.execute('''UPDATE Candidate_live SET TelephoneHome=%s WHERE CandidateID = %s
+        #''', (telephone_home, search_candidate_id))
+
+        #self.db.commit()
+        #self.cur.commit()
+        #self.statusBar().showMessage('candidate updated')
+        #self.cur.execute('''UPDATE Candidate_live SET TelephoneHome="63521" WHERE CandidateID = 12536 ''')
+
+        self.db.commit()
+
+        print(telephone_work)
+        print("Candidate Updated")
+
+
+    def CandidateUpdateDetails(self):
+        print('hello world')
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    CandidateEnrollment = QtWidgets.QMainWindow()
-    ui = Ui_CandidateEnrollment()
-    ui.setupUi(CandidateEnrollment)
-    CandidateEnrollment.show()
+    CandidateUpdate = QtWidgets.QMainWindow()
+    ui = Ui_CandidateUpdate()
+    ui.setupUi(CandidateUpdate)
+    CandidateUpdate.show()
     sys.exit(app.exec_())

@@ -3,7 +3,7 @@
 """
 Created on Thu November 21 10:41 2019
 
-Last Updated Mon February 17 08:13 2020
+Last Updated Fri February 21 15:33 2020
 
 @author: pierreb
 """
@@ -15,7 +15,7 @@ from PyQt5.QtWidgets import qApp, QTableWidget, QTableWidgetItem, QMessageBox, Q
 
 
 from Candidate_Details_v2120 import Ui_CandidateEnrollment
-from Candidate_Details_Update_v2120 import Ui_CandidateUpdate
+from Candidate_Details_Update_v2121 import Ui_CandidateUpdate
 from Client_Details_v2110 import Ui_ClientDetails
 from Client_Details_Update_v103 import Ui_ClientDetailsUpdate
 from Client_Contact_Details_v101 import Ui_ClientContactDetails
@@ -3737,7 +3737,7 @@ CandidateID VARCHAR(30) NOT NULL
         #print(row)
         CandidateID = self.tableWidget.item(row, 0).text()
         FirstName = self.tableWidget.item(row, 1).text()
-        print(CandidateID) 
+        #print(CandidateID) 
 
 
         self.cur.execute('''
@@ -3755,7 +3755,7 @@ CandidateID VARCHAR(30) NOT NULL
         #print(row)
         CandidateID = self.tableWidget.item(row, 0).text()
         FirstName = self.tableWidget.item(row, 1).text()
-        print(CandidateID) 
+        #print(CandidateID) 
 
         conn = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx',
                                     use_unicode=True, charset='utf8')

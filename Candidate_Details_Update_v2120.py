@@ -3,7 +3,7 @@
 """
 Created on Thu November  21 09:41 2019
 
-Last Updated Fri Feb 21 09:28 2020
+Last Updated Mon Feb 24 09:42 2020
 
 @author: pierreb
 """
@@ -1647,7 +1647,11 @@ class Ui_CandidateUpdate(object):
         self.lineEdit_17.setText(data[65])
         self.lineEdit_18.setText(data[66])
         self.lineEdit_19.setText(data[67])
-        self.comboBox_5.addItem(data[16])
+        self.lineEdit_50.setText(data[6])
+        #self.comboBox_4.addItem(data[6])
+        self.lineEdit_51.setText(data[16])
+        #self.comboBox_5.addItem(data[16])
+        self.lineEdit_52.setText(data[43])
         self.comboBox_6.addItem(data[43])
         self.lineEdit_21.setText(data[60])
         self.lineEdit_22.setText(data[61])
@@ -1674,8 +1678,8 @@ class Ui_CandidateUpdate(object):
         #self.lineEdit_74.setText(data[27])
         self.lineEdit_45.setText(data[28])
         self.lineEdit_46.setText(data[29])
-        self.comboBox_8.addItem(data[31])
-        self.comboBox_9.addItem(data[58])
+        self.lineEdit_51.setText(data[31])
+        self.lineEdit_52.setText(data[58])
         #self.dateEdit_3.setText(data[34])
         self.comboBox_11.addItem(data[35])
         self.comboBox_12.addItem(data[36])
@@ -1694,6 +1698,13 @@ class Ui_CandidateUpdate(object):
         self.PassportCountry_Combobox()
         self.CandidateFolder_Combobox()
         self.CandidateCategory_Combobox()
+        self.MaritalStatus_Combobox()
+        self.EmploymentEquity_Combobox()
+        self.AccountType_Combobox()
+        self.AccountHolderRelationship_Combobox()
+        self.PaymentFrequency_Combobox()
+        self.PayrollPaymentType_Combobox()
+        self.UIFStatus_Combobox()
         self.db.close()
 
 
@@ -1711,8 +1722,7 @@ class Ui_CandidateUpdate(object):
 
         self.comboBox_7.clear()        
         self.comboBox_7.addItem(str(data[0]))
-        print(data)
-
+        
 
 #Gender
     def Gender_Combobox(self):
@@ -1748,16 +1758,124 @@ class Ui_CandidateUpdate(object):
 
 #CandidateCategory
     def CandidateCategory_Combobox(self):
+        candidatecategoryid = self.lineEdit_50.text()
         self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
                                charset='utf8')
         self.cur = self.db.cursor()
               
-        self.cur.execute(''' SELECT Description FROM CandidateCategory ''')
-        data = self.cur.fetchall()
+        sql = ''' SELECT Description FROM CandidateCategory WHERE CandidateCategoryID = %s '''
+        self.cur.execute(sql, (candidatecategoryid))
+        data = self.cur.fetchone()
         
-        self.comboBox_3.clear()
+        self.comboBox_4.clear()
         self.comboBox_4.addItem(str(data[0]))
         
+
+
+#MaritalStatus
+    def MaritalStatus_Combobox(self):
+        maritalstatusid = self.lineEdit_51.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = '''  SELECT Description FROM MaritalStatus WHERE MaritalStatusID = %s '''
+        self.cur.execute(sql, (maritalstatusid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_5.clear()
+        self.comboBox_5.addItem(str(data[0]))
+
+
+#EmploymentEquity
+    def EmploymentEquity_Combobox(self):
+        employmentequityid = self.lineEdit_52.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM EmploymentEquity WHERE EmploymentEquityID = %s '''
+        self.cur.execute(sql, (employmentequityid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_6.clear()
+        self.comboBox_6.addItem(data[0])    
+
+
+#AccountType:
+    def AccountType_Combobox(self):
+        bankaccounttypeid = self.lineEdit_53.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM BankAccountType WHERE BankAccountTypeID = %s '''
+        self.cur.execute(sql, (bankaccounttypeid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_8.clear()
+        self.comboBox_8.addItem(data[0])     
+
+
+#AccountHolderRelationship:
+    def AccountHolderRelationship_Combobox(self):
+        code = self.lineEdit_54.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM AccountHolderRelationship WHERE Code = %s '''
+        self.cur.execute(sql, (code))
+        data = self.cur.fetchone()
+        
+        self.comboBox_9.clear()
+        self.comboBox_9.addItem(data[0])         
+
+
+#PaymentFrequency:
+    def PaymentFrequency_Combobox(self):
+        paymentfrequencyid = self.lineEdit_55.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM PaymentFrequency WHERE PaymentFrequencyID = %s '''
+        self.cur.execute(sql, (paymentfrequencyid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_11.clear()
+        self.comboBox_11.addItem(data[0])    
+
+
+#PayrollPaymentType:
+    def PayrollPaymentType_Combobox(self):
+        payrollpaymenttypeid = self.lineEdit_56.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM PayrollPaymentType WHERE PayrollPaymentTypeID = %s '''
+        self.cur.execute(sql, (payrollpaymenttypeid))
+        data = self.cur.fetchone()
+        
+        self.comboBox_12.clear()
+        self.comboBox_12.addItem(data[0])      
+
+
+#UIFStatus:
+    def UIFStatus_Combobox(self):
+        code = self.lineEdit_57.text()
+        self.db = pymysql.connect(host='129.232.195.18', port=3306, user='pierreb', password='Springboks2017', db='medx', use_unicode=True,
+                               charset='utf8')
+        self.cur = self.db.cursor()
+              
+        sql = ''' SELECT Description FROM UIFStatus WHERE Code = %s '''
+        self.cur.execute(sql, (code))
+        data = self.cur.fetchone()
+        
+        self.comboBox_13.clear()
+        self.comboBox_13.addItem(data[0])                                                          
+
 
 #Candidate_Show_Qualifications
     def Candidate_Show_Qualifications(self):
@@ -2128,9 +2246,9 @@ class Ui_CandidateUpdate(object):
         telephone_work = self.lineEdit_8.text()
         telephone_cell = self.lineEdit_9.text()
         email_address = self.lineEdit_10.text()
-        category = self.lineEdit_50.text()
+        category = self.comboBox_4.currentText()
         sanc_number = self.lineEdit_11.text()
-        marital_status = self.lineEdit_51.text()
+        marital_status = self.comboBox_5.currentText()
         employment_equity = self.lineEdit_52.text()
         postal_addressPostal_code = self.lineEdit_34.text()
         postal_address_country = self.lineEdit_44.text()
